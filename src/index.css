@@ -1,0 +1,277 @@
+/* ===== DESIGN TOKENS — iamsameer.dev inspired dark theme ===== */
+:root {
+  /* Background */
+  --bg-primary: #0a0a0a;
+  --bg-secondary: #111111;
+  --bg-card: rgba(18, 18, 18, 0.85);
+  --bg-card-hover: rgba(28, 28, 28, 0.95);
+  --bg-glass: rgba(255, 255, 255, 0.03);
+  --bg-sidebar: rgba(10, 10, 10, 0.95);
+
+  /* Accent */
+  --accent-primary: #0A66C2;
+  --accent-secondary: #3b82f6;
+  --accent-tertiary: #60a5fa;
+  --accent-glow: rgba(10, 102, 194, 0.35);
+  --accent-warm: #f59e0b;
+  --accent-emerald: #34d399;
+
+  /* Text */
+  --text-primary: #ededed;
+  --text-secondary: #888888;
+  --text-muted: #555555;
+  --text-dim: #333333;
+
+  /* Border */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-glow: rgba(59, 130, 246, 0.25);
+
+  /* Spacing */
+  --sidebar-width: 64px;
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Fonts */
+  --font-primary: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', 'SF Mono', monospace;
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-primary);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #222;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #333;
+}
+
+::selection {
+  background: var(--accent-primary);
+  color: white;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: var(--font-primary);
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ===== LAYOUT ===== */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* ===== SUBTLE BACKGROUND GRADIENT ===== */
+.bg-gradient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% -20%, rgba(10, 102, 194, 0.08), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 80%, rgba(59, 130, 246, 0.04), transparent);
+}
+
+/* ===== SECTION UTILITIES ===== */
+.section {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 80px 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.section-label {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 24px;
+}
+
+.section-row {
+  display: flex;
+  gap: 80px;
+  align-items: flex-start;
+}
+
+.section-row .section-label {
+  min-width: 70px;
+  padding-top: 4px;
+}
+
+.section-row .section-body {
+  flex: 1;
+}
+
+/* ===== PAGE HEADER ===== */
+.page-header {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 60px 40px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 8px;
+}
+
+.page-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  transition: all var(--transition-smooth);
+}
+
+.glass-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-glow);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* ===== TAG ===== */
+.tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+  background: var(--bg-glass);
+  transition: all var(--transition-fast);
+}
+
+.tag:hover {
+  border-color: var(--accent-secondary);
+  color: var(--accent-tertiary);
+}
+
+/* ===== PAGE TRANSITION WRAPPER ===== */
+.page-transition {
+  min-height: 100vh;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .section {
+    padding: 60px 32px;
+  }
+  .page-header {
+    padding: 48px 32px 0;
+  }
+  .section-row {
+    gap: 48px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    padding-bottom: 72px;
+  }
+
+  .section {
+    padding: 40px 20px;
+  }
+
+  .page-header {
+    padding: 32px 20px 0;
+  }
+
+  .section-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  :root {
+    --sidebar-width: 0px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 32px 16px;
+  }
+
+  .page-header {
+    padding: 24px 16px 0;
+  }
+
+  .page-title {
+    font-size: 1.6rem;
+  }
+}

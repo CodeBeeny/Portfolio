@@ -1,0 +1,15 @@
+.about-text {
+  color: var(--text-secondary);
+  font-size: 0.92rem;
+  line-height: 1.8;
+  margin-bottom: 18px;
+}
+
+.about-text:last-child {
+  margin-bottom: 0;
+}
+
+.about-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
